@@ -52,4 +52,17 @@ app.get("/event/:id", async (req, res) => {
     res.render("event", {appo: appointment})
 })
 
+app.post("/finish", async (req, res) => {
+    var id = req.body.id
+    var result = await AppointmentService.Finish(id)
+    res.redirect("/")
+})
+
+app.get("/list", async (req, res) => {
+
+    await AppointmentService.Search("3894724")
+    var appos = await AppointmentService.GetAll(true)
+    res.render("list", {appos})
+})
+
 app.listen(8080, () => {})
