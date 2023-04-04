@@ -61,7 +61,6 @@ class AppointmentService {
 
     async Search(query) {
         var appos = await Appo.find().or([{email: query}, {cpf: query}])
-        console.log(appos)
     }
 }
 
